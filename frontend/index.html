@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Threat Intelligence Graph</title><link rel="stylesheet" href="/static/style.css"><script defer src="/static/app.js"></script></head>
+<body><header><h1>Threat Intelligence Graph</h1><p>Investigate recorded claims. Every edge has evidence; connectivity does not establish attribution.</p></header>
+<main><section class="controls" aria-label="Investigation controls">
+<form id="search"><label>Entity or IOC<input id="query" placeholder="example.org, hash, IP, or node ID" maxlength="4096"></label><button>Search</button></form>
+<label>Entity type<select id="entity"><option value="">All entity types</option></select></label>
+<label>Relationship<select id="relationship"><option value="">All relationships</option></select></label>
+<label>Depth<input id="depth" type="number" min="0" max="6" value="1"></label>
+<label>Node limit<input id="limit" type="number" min="1" max="300" value="100"></label>
+<label>After<input id="after" type="datetime-local"></label><label>Before<input id="before" type="datetime-local"></label>
+<label><input id="unknown" type="checkbox" checked> Include unknown times</label>
+<button id="expand" type="button" disabled>Expand selected node</button><button id="fit" type="button">Reset view</button>
+<label>Saved investigation<select id="investigation"><option value="">Select investigation</option></select></label>
+<div><button id="open-case" type="button">Open case</button><button id="export-json" type="button">Export JSON</button><button id="export-md" type="button">Export Markdown</button></div>
+<p id="status" role="status" aria-live="polite">Loading catalog…</p>
+<p class="legend">○ Observable / report · □ Process / file · ◇ Actor / campaign · △ ATT&amp;CK / source<br>Solid edge: observation; dashed: reported / derived; dotted: hypothesis. Labels state origin.</p>
+<div id="results" aria-label="Search results"></div>
+</section><section class="canvas" aria-label="Graph view"><svg id="graph" role="img" aria-label="Interactive evidence graph" viewBox="0 0 1000 700" tabindex="0"><g id="viewport"></g></svg><p id="empty">Search for an entity to explore its recorded relationships.</p></section>
+<aside aria-label="Entity and evidence details"><h2 id="detail-title">Evidence inspector</h2><p>Select a node or relationship to inspect provenance.</p><div id="details"></div><div id="edge-list"></div></aside></main>
+<footer>Local, offline analysis. Imported URLs and IPs are never visited. Heuristic confidence is not a calibrated probability.</footer></body></html>

@@ -1,0 +1,31 @@
+{
+  "format": "ioc",
+  "source_id": "synthetic-feed",
+  "records": [
+    {
+      "id": "dns-1",
+      "entity_type": "domain",
+      "value": "C2.EXAMPLE.",
+      "resolves_to": "192.0.2.8",
+      "report_id": "bulletin-1",
+      "description": "Synthetic DNS claim, not live intelligence.",
+      "observation_time": "2025-01-10T12:00:00Z",
+      "quality": 0.8,
+      "upstream_claim_id": "synthetic:dns-1"
+    },
+    {
+      "id": "ioc-2",
+      "entity_type": "ipv4",
+      "value": "192.0.2.8",
+      "report_id": "bulletin-2",
+      "quality": 0.7
+    },
+    {
+      "id": "hash-1",
+      "entity_type": "file_hash",
+      "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "report_id": "bulletin-1",
+      "quality": 0.6
+    }
+  ]
+}

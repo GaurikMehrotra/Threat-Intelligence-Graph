@@ -1,0 +1,111 @@
+{
+  "format": "sandbox",
+  "source_id": "synthetic-sandbox",
+  "report_id": "synthetic-run-1",
+  "entities": [
+    {
+      "id": "p",
+      "entity_type": "process",
+      "value": "sample.exe"
+    },
+    {
+      "id": "ip",
+      "entity_type": "ipv4",
+      "value": "192.0.2.8"
+    },
+    {
+      "id": "child",
+      "entity_type": "process",
+      "value": "cmd.exe"
+    },
+    {
+      "id": "file",
+      "entity_type": "file",
+      "value": "payload.bin"
+    },
+    {
+      "id": "registry",
+      "entity_type": "registry_key",
+      "value": "HKCU\\Software\\Synthetic"
+    },
+    {
+      "id": "tech",
+      "entity_type": "attack_technique",
+      "value": "T1059"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "e",
+      "evidence_type": "behavior",
+      "description": "Synthetic network trace: process 10 connects to 192.0.2.8.",
+      "observation_time": "2025-01-10T12:01:00Z",
+      "quality": 0.9,
+      "upstream_claim_id": "synthetic:network-1"
+    },
+    {
+      "id": "behavior",
+      "evidence_type": "behavior",
+      "description": "Synthetic process trace: sample spawns cmd.exe, writes a file and registry key.",
+      "quality": 0.85,
+      "observation_time": "2025-01-10T12:02:00Z",
+      "upstream_claim_id": "synthetic:behavior-1"
+    }
+  ],
+  "events": [
+    {
+      "id": "c",
+      "source": "p",
+      "target": "ip",
+      "relationship_type": "COMMUNICATED_WITH",
+      "evidence_ids": [
+        "e"
+      ],
+      "origin": "direct_observation"
+    },
+    {
+      "id": "spawn",
+      "source": "p",
+      "target": "child",
+      "relationship_type": "SPAWNED_PROCESS",
+      "evidence_ids": [
+        "behavior"
+      ],
+      "origin": "direct_observation",
+      "valid_from": "2025-01-10T12:02:00Z"
+    },
+    {
+      "id": "drop",
+      "source": "p",
+      "target": "file",
+      "relationship_type": "DROPPED_FILE",
+      "evidence_ids": [
+        "behavior"
+      ],
+      "origin": "direct_observation",
+      "valid_from": "2025-01-10T12:02:00Z"
+    },
+    {
+      "id": "registry",
+      "source": "p",
+      "target": "registry",
+      "relationship_type": "MODIFIED_REGISTRY",
+      "evidence_ids": [
+        "behavior"
+      ],
+      "origin": "direct_observation",
+      "valid_from": "2025-01-10T12:02:00Z"
+    },
+    {
+      "id": "attack",
+      "source": "p",
+      "target": "tech",
+      "relationship_type": "MAPPED_TO_TECHNIQUE",
+      "evidence_ids": [
+        "behavior"
+      ],
+      "origin": "source_reported",
+      "valid_from": "2025-01-10T12:02:00Z"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "version": "17.1",
+  "url": "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/v17.1/enterprise-attack/enterprise-attack.json",
+  "sha256": "0d1c347a4d584cf7e11ef46556c33b7689341443bf86299188d46c307274323b",
+  "bytes": 44879463,
+  "objects": 22653,
+  "source_id": "mitre-attack-official"
+}

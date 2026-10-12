@@ -1,0 +1,3 @@
+id,entity_type,value,report_id
+csv-1,domain,C2.EXAMPLE,bulletin-3
+csv-2,ipv6,2001:db8::8,bulletin-3

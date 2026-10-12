@@ -1,0 +1,6 @@
+{
+  "source_weight": 0.12,
+  "contradiction_penalty": 0.2,
+  "stale_days": 365,
+  "stale_penalty": 0.15
+}

@@ -1,0 +1,86 @@
+{
+  "format": "graph",
+  "source_id": "synthetic-attribution-source",
+  "nodes": [
+    {
+      "id": "campaign",
+      "entity_type": "campaign",
+      "value": "campaign-id-1",
+      "display_name": "Synthetic campaign"
+    },
+    {
+      "id": "actor",
+      "entity_type": "threat_actor",
+      "value": "actor-id-1",
+      "display_name": "Synthetic actor"
+    },
+    {
+      "id": "domain",
+      "entity_type": "domain",
+      "value": "c2.example"
+    },
+    {
+      "id": "report",
+      "entity_type": "intelligence_report",
+      "value": "contrary-report"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "claim",
+      "evidence_type": "source_claim",
+      "description": "Synthetic source asserts attribution; independent confirmation absent.",
+      "quality": 0.6,
+      "upstream_claim_id": "synthetic:attribution-1"
+    },
+    {
+      "id": "contrary",
+      "evidence_type": "source_claim",
+      "description": "Synthetic follow-up disputes the attribution.",
+      "quality": 0.8,
+      "upstream_claim_id": "synthetic:counterclaim-1"
+    }
+  ],
+  "edges": [
+    {
+      "id": "a",
+      "source": "campaign",
+      "target": "actor",
+      "relationship_type": "ATTRIBUTED_TO",
+      "evidence_ids": [
+        "claim"
+      ],
+      "rationale": "Explicit fictional source attribution, used to test uncertainty."
+    },
+    {
+      "id": "b",
+      "source": "campaign",
+      "target": "actor",
+      "relationship_type": "ATTRIBUTED_TO",
+      "evidence_ids": [
+        "contrary"
+      ],
+      "status": "disputed",
+      "rationale": "Fictional source disputes earlier attribution."
+    },
+    {
+      "id": "c",
+      "source": "domain",
+      "target": "campaign",
+      "relationship_type": "PART_OF_CAMPAIGN",
+      "evidence_ids": [
+        "claim"
+      ],
+      "rationale": "Explicit fictional campaign membership claim."
+    },
+    {
+      "id": "d",
+      "source": "report",
+      "target": "actor",
+      "relationship_type": "CONTRADICTS",
+      "evidence_ids": [
+        "contrary"
+      ]
+    }
+  ]
+}
